@@ -33,5 +33,5 @@ jobs:
         playwright install 
         
     - name: Run tests
-      run: pipenv shell       
+      run:     
            pytest
