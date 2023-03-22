@@ -36,4 +36,4 @@ jobs:
         
     - name: Run tests
       run:     
-           pytest --firefox
+           pytest --browser firefox
