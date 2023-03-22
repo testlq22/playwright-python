@@ -1,6 +1,6 @@
 # This is basic workflow to help you get started with Action
 
-name:CI
+name: CI
 
 # Controls when the workflow will run
 on:
