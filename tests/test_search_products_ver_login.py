@@ -4,19 +4,17 @@ from pages.search_products_ver_login_page import SearchProductsVerifyAfterLogin
 from pages.register_page import Register
 from pages.login_valid_page import LoginValidCred
 from utils.test_data import Data
+from utils.tools import take_screenshot
 
 
 class TestSearchProductsVerifyAfterLogin:
 
     @pytest.fixture
-    def test_setup(self, page):
-        self.page = page
-        self.page.set_viewport_size(viewport_size={'width': 1920, 'height': 1080})
+    def test_setup(self, new_page):
+        self.page = new_page
         self.searchVerifyAfterLogin = SearchProductsVerifyAfterLogin(self.page)
         self.reg = Register(self.page)
         self.log = LoginValidCred(self.page)
-
-        self.page.goto('https://automationexercise.com/')
 
         self.reg.submit_login_btn_click()
         self.reg.set_username(Data.fakeUser)
@@ -46,7 +44,7 @@ class TestSearchProductsVerifyAfterLogin:
         yield
         self.log.click_delete_account_btn()
 
-    def test_verify_product_detail_page(self, test_setup):
+    def test_search_products_ver_after_login(self, test_setup):
         self.searchVerifyAfterLogin.check_page_loaded()
         self.searchVerifyAfterLogin.products_btn_click()
         self.searchVerifyAfterLogin.verify_products_page()
@@ -74,3 +72,4 @@ class TestSearchProductsVerifyAfterLogin:
         self.searchVerifyAfterLogin.verify_product_1_visible()
         self.searchVerifyAfterLogin.verify_product_2_visible()
         self.searchVerifyAfterLogin.verify_product_3_visible()
+        take_screenshot(self.page, 'add_products')

@@ -4,19 +4,17 @@ from pages.pl_ord_login_before_check_page import PlaceOrderLoginBeforeCheckout
 from pages.register_page import Register
 from pages.login_valid_page import LoginValidCred
 from utils.test_data import Data
+from utils.tools import take_screenshot
 
 
-class TestVerifyTestCases:
+class TestPlaceOrderLoginBeforeCheckout:
 
     @pytest.fixture
-    def test_setup(self, page):
-        self.page = page
-        self.page.set_viewport_size(viewport_size={'width': 1920, 'height': 1080})
+    def test_setup(self, new_page):
+        self.page = new_page
         self.logBeforeCheckout = PlaceOrderLoginBeforeCheckout(self.page)
         self.reg = Register(self.page)
         self.log = LoginValidCred(self.page)
-
-        self.page.goto('https://automationexercise.com/')
 
         self.reg.submit_login_btn_click()
 
@@ -47,7 +45,7 @@ class TestVerifyTestCases:
         self.reg.click_logout_btn()
         self.reg.click_logo()
 
-    def test_verify_product_detail_page(self, test_setup):
+    def test_place_ord_login_before_check(self, test_setup):
         self.logBeforeCheckout.check_page_loaded()
         self.reg.submit_login_btn_click()
         # login form
@@ -90,3 +88,4 @@ class TestVerifyTestCases:
         self.page.wait_for_timeout(2000)
         self.reg.account_deleted_visible()
         self.reg.click_continue_btn()
+        take_screenshot(self.page, 'place_ord_login_before_check')

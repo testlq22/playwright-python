@@ -1,17 +1,15 @@
 import pytest
 
 from pages.verify_products_detail_page import VerifyProductsDetailPage
+from utils.tools import take_screenshot
 
 
-class TestVerifyTestCases:
+class TestVerifyProductsDetailPage:
 
     @pytest.fixture
-    def test_setup(self, page):
-        self.page = page
-        self.page.set_viewport_size(viewport_size={'width': 1920, 'height': 1080})
+    def test_setup(self, new_page):
+        self.page = new_page
         self.verProdPage = VerifyProductsDetailPage(self.page)
-
-        self.page.goto('https://automationexercise.com/')
 
     def test_verify_product_detail_page(self, test_setup):
         self.verProdPage.check_page_loaded()
@@ -21,3 +19,4 @@ class TestVerifyTestCases:
         self.verProdPage.first_product_details_click()
         self.verProdPage.check_product_details_page_loaded()
         self.verProdPage.check_products_details_info()
+        take_screenshot(self.page, 'product_detail')

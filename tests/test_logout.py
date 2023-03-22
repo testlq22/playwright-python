@@ -4,19 +4,19 @@ from pages.logout_page import Logout
 from pages.register_page import Register
 from pages.login_valid_page import LoginValidCred
 from utils.test_data import Data
+from utils.tools import take_screenshot
 
 
 class TestLogout:
 
     @pytest.fixture
-    def test_setup(self, page):
-        self.page = page
-        self.page.set_viewport_size(viewport_size={'width': 1920, 'height': 1080})
+    def test_setup(self, new_page):
+        self.page = new_page
         self.logout = Logout(self.page)
         self.reg = Register(self.page)
         self.log = LoginValidCred(self.page)
 
-        self.page.goto('https://automationexercise.com/')
+
         self.reg.submit_login_btn_click()
         self.reg.set_username(Data.fakeUser)
         self.reg.set_email(Data.fakeEmail)
@@ -51,7 +51,7 @@ class TestLogout:
 
 
 
-    def test_click_login_button(self, test_setup):
+    def test_logout(self, test_setup):
         self.logout.check_page_loaded()
         self.logout.submit_login_btn_click()
         self.logout.login_text_visible()
@@ -61,3 +61,4 @@ class TestLogout:
         self.logout.logged_as_visible(Data.fakeUser)
         self.logout.click_logout_btn()
         self.logout.check_login_page()
+        take_screenshot(self.page, 'logout')

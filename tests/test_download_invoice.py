@@ -4,19 +4,17 @@ from pages.download_invoice_page import DownloadInvoice
 from pages.pl_ord_reg_before_check_page import PlaceOrderRegBeforeCheckout
 from pages.register_page import Register
 from utils.test_data import Data
+from utils.tools import take_screenshot
 
 
-class TestPlaceOrderRegBeforeCheckout:
+class TestDownloadInvoice:
 
     @pytest.fixture
-    def test_setup(self, page):
-        self.page = page
-        self.page.set_viewport_size(viewport_size={'width': 1920, 'height': 1080})
+    def test_setup(self, new_page):
+        self.page = new_page
         self.regBeforeCheckout = PlaceOrderRegBeforeCheckout(self.page)
         self.reg = Register(self.page)
         self.dwnld = DownloadInvoice(self.page)
-
-        self.page.goto('https://automationexercise.com/')
 
     def test_verify_product_detail_page(self, test_setup):
         self.regBeforeCheckout.check_page_loaded()
@@ -58,8 +56,6 @@ class TestPlaceOrderRegBeforeCheckout:
         self.regBeforeCheckout.check_cart_displayed()
         self.regBeforeCheckout.click_proceed_btn()
         # cart
-        """self.regBeforeCheckout.click_header_cart_btn()
-        self.regBeforeCheckout.click_proceed_btn()"""
         self.regBeforeCheckout.check_delivery_address(Data.firstName, Data.lastName, Data.company, Data.address1, Data.address2, Data.country, Data.state, Data.city, Data.zipCode, Data.mobileNumber)
         self.regBeforeCheckout.verify_product_1_visible()
         self.regBeforeCheckout.verify_product_2_visible()
@@ -79,3 +75,5 @@ class TestPlaceOrderRegBeforeCheckout:
         self.reg.click_delete_account_btn()
         self.reg.account_deleted_visible()
         self.reg.click_continue_btn()
+        take_screenshot(self.page, 'download_invoice')
+

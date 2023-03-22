@@ -3,20 +3,17 @@ import pytest
 from pages.pl_ord_reg_while_check_page import PlaceOrderRegWhileCheckout
 from pages.register_page import Register
 from utils.test_data import Data
+from utils.tools import take_screenshot
 
-
-class TestVerifyTestCases:
+class TestPlaceOrderRegWhileCheckout:
 
     @pytest.fixture
-    def test_setup(self, page):
-        self.page = page
-        self.page.set_viewport_size(viewport_size={'width': 1920, 'height': 1080})
+    def test_setup(self, new_page):
+        self.page = new_page
         self.regWhileCheckout = PlaceOrderRegWhileCheckout(self.page)
         self.reg = Register(self.page)
 
-        self.page.goto('https://automationexercise.com/')
-
-    def test_verify_product_detail_page(self, test_setup):
+    def test_place_order_reg_while_check(self, test_setup):
         self.regWhileCheckout.check_page_loaded()
         self.regWhileCheckout.hover_product_1()
         self.regWhileCheckout.add_first_product()
@@ -77,3 +74,4 @@ class TestVerifyTestCases:
         self.page.wait_for_timeout(2000)
         self.reg.account_deleted_visible()
         self.reg.click_continue_btn()
+        take_screenshot(self.page, 'place_order_reg_while_check')

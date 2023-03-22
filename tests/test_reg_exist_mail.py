@@ -4,19 +4,18 @@ from pages.reg_exist_mail_page import RegExistMail
 from pages.register_page import Register
 from pages.login_valid_page import LoginValidCred
 from utils.test_data import Data
+from utils.tools import take_screenshot
 
 
-class TestRegister:
+class TestRegExistMail:
 
     @pytest.fixture
-    def test_setup(self, page):
-        self.page = page
-        self.page.set_viewport_size(viewport_size={'width': 1920, 'height': 1080})
+    def test_setup(self, new_page):
+        self.page = new_page
         self.regExistMail = RegExistMail(self.page)
         self.reg = Register(self.page)
         self.log = LoginValidCred(self.page)
 
-        self.page.goto('https://automationexercise.com/')
         self.reg.submit_login_btn_click()
         self.reg.set_username(Data.fakeUser)
         self.reg.set_email(Data.fakeEmail)
@@ -57,4 +56,5 @@ class TestRegister:
         self.regExistMail.set_email(Data.fakeEmail)
         self.regExistMail.signup_btn_click()
         self.regExistMail.error_msg_visible()
+        take_screenshot(self.page, 'reg_exist_mail')
 

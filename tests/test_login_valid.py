@@ -3,18 +3,17 @@ import pytest
 from pages.login_valid_page import LoginValidCred
 from pages.register_page import Register
 from utils.test_data import Data
+from utils.tools import take_screenshot
 
 
-class TestLogin:
+class TestLoginValidCred:
 
     @pytest.fixture
-    def test_setup(self, page):
-        self.page = page
-        self.page.set_viewport_size(viewport_size={'width': 1920, 'height': 1080})
+    def test_setup(self, new_page):
+        self.page = new_page
         self.log = LoginValidCred(self.page)
         self.reg = Register(self.page)
 
-        self.page.goto('https://automationexercise.com/')
         self.reg.submit_login_btn_click()
 
         self.reg.set_username(Data.fakeUser)
@@ -43,9 +42,8 @@ class TestLogin:
         self.reg.click_continue_btn()
         self.reg.click_logout_btn()
         self.reg.click_logo()
-        '''self.page.goto('https://automationexercise.com/')'''
 
-    def test_click_login_button(self, test_setup):
+    def test_login_valid_cred(self, test_setup):
         self.log.check_page_loaded()
         self.log.submit_login_btn_click()
         self.log.login_text_visible()
@@ -55,4 +53,5 @@ class TestLogin:
         self.log.logged_as_visible(Data.fakeUser)
         self.log.click_delete_account_btn()
         self.log.account_deleted_visible()
+        take_screenshot(self.page, 'login_valid_cred')
 

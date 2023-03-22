@@ -2,22 +2,18 @@ import pytest
 
 from pages.register_page import Register
 from utils.test_data import Data
+from utils.tools import take_screenshot
 
 
 class TestRegister:
 
     @pytest.fixture
-    def test_setup(self, page):
-        self.page = page
-        self.page.set_viewport_size(viewport_size={'width': 1920, 'height': 1080})
+    def test_setup(self, new_page):
+        self.page = new_page
         self.reg = Register(self.page)
 
-        self.page.goto('https://automationexercise.com/')
-
-    def test_check_page(self, test_setup):
+    def test_register(self, test_setup):
         self.reg.check_page_loaded()
-
-    def test_click_login_button(self, test_setup):
         self.reg.submit_login_btn_click()
         self.reg.signup_text_visible()
         self.reg.set_username(Data.fakeUser)
@@ -48,3 +44,4 @@ class TestRegister:
         self.reg.click_delete_account_btn()
         self.reg.account_deleted_visible()
         self.reg.click_continue_btn()
+        take_screenshot(self.page, 'register')

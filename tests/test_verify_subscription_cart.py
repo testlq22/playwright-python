@@ -2,19 +2,17 @@ import pytest
 
 from pages.verify_subscription_cart_page import VerifySubscriptionCartPage
 from utils.test_data import Data
+from utils.tools import take_screenshot
 
 
-class TestSearchProduct:
+class TestVerifySubscriptionCartPage:
 
     @pytest.fixture
-    def test_setup(self, page):
-        self.page = page
-        self.page.set_viewport_size(viewport_size={'width': 1920, 'height': 1080})
+    def test_setup(self, new_page):
+        self.page = new_page
         self.verSubscriptionCart = VerifySubscriptionCartPage(self.page)
 
-        self.page.goto('https://automationexercise.com/')
-
-    def test_verify_product_detail_page(self, test_setup):
+    def test_verify_subscription_cart_page(self, test_setup):
         self.verSubscriptionCart.check_page_loaded()
         self.verSubscriptionCart.click_cart_btn_header()
         self.verSubscriptionCart.scroll_to_arrow()
@@ -23,3 +21,4 @@ class TestSearchProduct:
         self.verSubscriptionCart.fill_email(Data.fakeEmail)
         self.verSubscriptionCart.click_arrow_btn()
         self.verSubscriptionCart.verify_success_alert_visible()
+        take_screenshot(self.page, 'verify_subscription_cart_page')

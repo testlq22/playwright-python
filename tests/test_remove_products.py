@@ -2,19 +2,17 @@ import pytest
 
 from pages.remove_products_page import RemoveProducts
 from utils.test_data import Data
+from utils.tools import take_screenshot
 
 
 class TestRemoveProducts:
 
     @pytest.fixture
-    def test_setup(self, page):
-        self.page = page
-        self.page.set_viewport_size(viewport_size={'width': 1920, 'height': 1080})
+    def test_setup(self, new_page):
+        self.page = new_page
         self.removeProducts = RemoveProducts(self.page)
 
-        self.page.goto('https://automationexercise.com/')
-
-    def test_verify_product_detail_page(self, test_setup):
+    def test_remove_products(self, test_setup):
         self.removeProducts.check_page_loaded()
         self.removeProducts.products_btn_click()
         self.removeProducts.hover_product_1()
@@ -31,3 +29,4 @@ class TestRemoveProducts:
         self.removeProducts.del_product_2()
         self.removeProducts.verify_product_1_not_visible(Data.id1)
         self.removeProducts.verify_product_2_not_visible(Data.id2)
+        take_screenshot(self.page, 'remove_products')
