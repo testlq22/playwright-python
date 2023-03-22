@@ -31,6 +31,7 @@ jobs:
         pip install pipenv
         pipenv install pytest-playwright   
         playwright install 
+        pipenv install allure-pytest  
         
     - name: Run tests
       run:     
