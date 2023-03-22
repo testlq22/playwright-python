@@ -36,7 +36,6 @@ jobs:
         
         
     - name: Run tests
-      run:     
-           pytest 
-           playwright install
-           pytest
+      run: pytest 
+           
+           
