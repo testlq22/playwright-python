@@ -45,8 +45,8 @@ class ContactUs:
     def set_message(self, msg) -> None:
         self.__message_input.fill(msg)
 
-    def set_upload_file(self, file) -> None:
-        self.__upload_file.set_input_files(file)
+    def set_upload_file(self) -> None:
+        self.__upload_file.set_input_files(files=[{"name": "test.txt", "mimeType": "text/plain", "buffer": b"Just send it!"}],)
 
     def submit_btn_click(self) -> None:
         self.__submit_btn.click()

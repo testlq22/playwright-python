@@ -20,7 +20,7 @@ class TestContactUs:
         self.contact.set_email(Data.fakeEmail)
         self.contact.set_subject(Data.subject)
         self.contact.set_message(Data.message)
-        self.contact.set_upload_file(Data.fileToUpload)
+        self.contact.set_upload_file()
         self.page.wait_for_timeout(1000)
         self.contact.click_ok()
         self.contact.submit_btn_click()
