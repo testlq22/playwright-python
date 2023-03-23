@@ -29,8 +29,7 @@ jobs:
       run: 
         python -m pip install --upgrade pip
         pip install pipenv
-        pipenv install pytest-playwright   
-        playwright install 
+        pipenv install pytest-playwright          
         pipenv install allure-pytest 
         playwright install
         
