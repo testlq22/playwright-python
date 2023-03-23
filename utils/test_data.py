@@ -21,7 +21,7 @@ class Data:
     mobileNumber = '512-765-4321'
     subject = 'I need help'
     message = 'Help me to read this file'
-    fileToUpload = 'playwright-python/utils/test.txt'
+    fileToUpload = '/home/runner/work/playwright-python/playwright-python/utils/test.txt'
     product = 'Dress'
     someProduct = 'saree'
     product1Char = ['Blue Top', 'Rs. 500', '1', 'Rs. 500']
