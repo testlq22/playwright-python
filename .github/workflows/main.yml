@@ -31,7 +31,7 @@ jobs:
         pip install pipenv
         pipenv install pytest-playwright          
         pipenv install allure-pytest 
-        playwright install
+        playwright install chromium
         
         
     - name: Run tests
