@@ -21,7 +21,7 @@ class Data:
     mobileNumber = '512-765-4321'
     subject = 'I need help'
     message = 'Help me to read this file'
-    fileToUpload = 'C:/webdriveriotest/pythonProject3/utils/test.txt'
+    fileToUpload = '../utils/test.txt'
     product = 'Dress'
     someProduct = 'saree'
     product1Char = ['Blue Top', 'Rs. 500', '1', 'Rs. 500']
