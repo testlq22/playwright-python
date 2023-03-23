@@ -72,7 +72,9 @@ class TestPlaceOrderRegBeforeCheckout:
         """self.regBeforeCheckout.success_msg_visible()""" # doesnt work from 17.03.23
         self.page.wait_for_timeout(2000)
         self.regBeforeCheckout.success_msg2_visible()
+        self.page.wait_for_timeout(2000)
         self.reg.click_delete_account_btn()
+        self.page.wait_for_timeout(2000)
         self.reg.account_deleted_visible()
         self.reg.click_continue_btn()
         take_screenshot(self.page, 'place_order_reg_before_check')
