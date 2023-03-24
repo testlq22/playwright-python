@@ -29,7 +29,7 @@ class Data:
     fileToUploadLocal = '../utils/test.txt'
 
     # Use it for upload file from buffer
-    fileToUpload = 'files=[{"name": "test.txt", "mimeType": "text/plain", "buffer": b"this is a test"}],'
+    # fileToUpload = 'files=[{"name": "test.txt", "mimeType": "text/plain", "buffer": b"this is a test"}],'
     product = 'Dress'
     someProduct = 'saree'
     product1Char = ['Blue Top', 'Rs. 500', '1', 'Rs. 500']
