@@ -16,7 +16,7 @@ class TestDownloadInvoice:
         self.reg = Register(self.page)
         self.dwnld = DownloadInvoice(self.page)
 
-    def test_verify_product_detail_page(self, test_setup):
+    def test_download_invoice(self, test_setup):
         self.regBeforeCheckout.check_page_loaded()
         self.reg.submit_login_btn_click()
         # register form
@@ -70,10 +70,13 @@ class TestDownloadInvoice:
         self.regBeforeCheckout.fill_exp_year(Data.yearExpCard)
         self.regBeforeCheckout.click_pay_btn()
         self.regBeforeCheckout.success_msg2_visible()
+        self.page.wait_for_timeout(2000)
         self.dwnld.click_dwnld_invoice_btn()
+        self.page.wait_for_timeout(2000)
 
         self.reg.click_delete_account_btn()
         self.reg.account_deleted_visible()
+        self.page.wait_for_timeout(2000)
         self.reg.click_continue_btn()
         take_screenshot(self.page, 'download_invoice')
 

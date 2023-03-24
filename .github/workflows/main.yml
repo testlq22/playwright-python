@@ -6,6 +6,8 @@ name: CI
 on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+  # Runs workflow when a push is made to any branch in the workflow's repository
+  push:
   
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:

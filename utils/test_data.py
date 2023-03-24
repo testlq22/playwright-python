@@ -21,7 +21,14 @@ class Data:
     mobileNumber = '512-765-4321'
     subject = 'I need help'
     message = 'Help me to read this file'
-    # fileToUpload = '/home/runner/work/playwright-python/playwright-python/utils/test.txt'
+
+    # Use it for upload file from GITHUB workflow
+    fileToUploadGit = '/home/runner/work/playwright-python/playwright-python/utils/test.txt'
+
+    # Use it for upload file from local machine
+    fileToUploadLocal = '../utils/test.txt'
+
+    # Use it for upload file from buffer
     fileToUpload = 'files=[{"name": "test.txt", "mimeType": "text/plain", "buffer": b"this is a test"}],'
     product = 'Dress'
     someProduct = 'saree'
