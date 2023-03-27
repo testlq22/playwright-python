@@ -39,6 +39,17 @@ jobs:
         
         
     - name: Run tests
-      run: pytest 
+      run: pytest
+
+    - name: Report Status
+      if: always
+      uses: ravsamhq/notify-slack-action@v1
+      with:
+        status: ${{ job.status }}
+        message_format: ${{ secrets.GH_ACTIONS_URL }}
+        notify_when: "success,failure"
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.ACTION_MONITORING_SLACK }}
            
-           
+
+
