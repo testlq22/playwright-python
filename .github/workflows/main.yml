@@ -49,8 +49,6 @@ jobs:
         notify_when: "success,failure"
       env:
         SLACK_WEBHOOK_URL: ${{ secrets.ACTION_MONITORING_SLACK }}
-
-
            
 
 
