@@ -8,6 +8,8 @@ BUT!!!
 It works only if you are in the folder containing test or manually specify folder name .
 PS C:\webdriveriotest\pythonProject3\tests> pytest test_register.py    - working
 
+PS C:\webdriveriotest\pythonProject3\pytest tests/test_register.py    - working
+
 PS C:\webdriveriotest\pythonProject3> pytest test_register.py   -DOESN'T work and error appears:
                                                                  ERROR: file or directory not found: test_register.py
 
